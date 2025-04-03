@@ -1,0 +1,28 @@
+<p>two-way works!</p>
+
+<input [(ngModel)]="name" placeholder="enter name"/>
+<p>Hello {{name}}</p>
+
+<input type="checkbox" [(ngModel)]="isChecked"/>
+<p>Checked value is {{isChecked}}</p>
+
+
+
+<input type="radio" [(ngModel)]="selectedOption" [value]="'Option 1'">Option 1
+<input type="radio" [(ngModel)]="selectedOption" [value]="'Option 2'">Option 2
+
+<p>Selected ratio option {{selectedOption}}</p>
+
+
+<select [(ngModel)]="dropdownOption">
+    <option [ngValue]="'Option 1'">Option 1</option>
+    <option [ngValue]="'Option 2'">Option 2</option>
+
+</select>
+<p>Dropdown value {{dropdownOption}}</p>
+
+
+
+<textarea [(ngModel)="textareaOption"] placeholder="enter details here"></textarea>
+
+<p>{{textareaOption}}</p>
