@@ -1,0 +1,242 @@
+command for angular 
+np --help
+ng version
+
+
+Create project 
+ng new projectname
+
+navigate to project folder
+->ng serve (compile typescript code into javascript code)
+
+
+Install angular material via CLI 
+ng add @angular/material
+
+Install bootstrap 
+
+npm install bootstrap bootstrap-icons
+
+Folder structure 
+.angular->Ignore 
+.vscode->Ignore
+node_modules
+->Packages will be installed here in this folder 
+->You dont have to go through this folder or files 
+-> ng add or npm install -> Packageswill be seen here
+
+
+.editorconfig-> Make your custom editor changes in this files
+.gitignore-> we can add folder that we need to ignore while commiting
+
+
+.angular.json-> It contains all configuration details like version number , editorconfig,styles, js or for pipeline deployment 
+setting specific to your project 
+
+
+
+.package.json->the installed dependencies of the project 
+->when we run npm install inside project -> The modules list will be installed 
+
+package-lock.json->same details of package.json + dev dependencies broken down in detail 
+-> Dont touch this manually 
+
+
+
+Angular is single page application thus there is only one HTML file 
+
+main.ts is entry point to project 
+1st component to load is app component , which is the 
+
+
+
+
+Component In Angular
+1. Component in angular are declared using @component decorator
+2. @component decorator can have multiples input parameters 
+->selector -> its the name which can be used/referred in application 
+->standalone-> by default all angular applications are standalone,means no need to declare inside the module we can directly used them .
+->imports ->you will provide all required modules for this component 
+->templateurl->HTML for the component
+if you have one line of code then use template and if more line of code then use templateurl 
+template ='<h1>App component </h1>
+templateurl= './app.component.html'
+
+same for styels 
+styles:[]
+
+
+
+
+Component structure 
+
+<componentname>.component.html ->Template/HTML/using
+<componentName>.component.css.scss-> Stylesheet for the component
+<componentName>.component.ts->Class for component /logic/data/interactions
+
+
+Angular 17 By default all components are standalone
+use them anywhere in application, no need to inject in the module
+
+
+Componenet data flow
+@Input -> Used for sending data 
+
+@Output -> Sending data from the component back 
+
+
+Component have somethinsg called data binding 
+Data declared in class goes to template them back to component
+
+class->template->class
+
+
+like data goes from component in component.ts then to template then again to component
+
+
+
+Component life cycle methods
+
+creation->destroy
+(8 stages) in between
+
+
+
+
+Generating components
+
+1. ng generate component <component_name>
+ command to generate component of crew-members   (ng g c crew-members)
+But if you are on any other Angular version <17
+->Entry  in Module file 
+AppModule
+
+
+
+
+
+
+1.Angular 16 and below used AppModule 
+->Its mandatory to have atleast one Module
+->AppModule
+->main.ts ->AppModule
+
+2.Angular 17 onwards
+
+->Everything is standalone
+->No mandatory module is required
+->No app module anymore , but we can create our own custom module just like how done in previous version of Angular
+
+
+
+
+In Angular 16 AppRoutingModule
+In Angular 17 AppRoutes    (app.routes.ts)
+
+Angular 16 ->   
+AppModule  , AppRoutingModule    
+The routes are defined in AppRoutingModule and imported into AppModule
+Importing AppRoutingModule into AppModule
+
+AppModule -> main.ts
+
+
+
+Angular17 ->
+App.routes.ts ->AppRoutes
+App.routes.ts -> App.config.ts
+AppConfig-> main.ts
+
+
+We can still use RoutingModule in Angular17 , as it is backwards compatible
+To generate a module and routing module   
+ng g module  timetable --routing
+
+
+Standalone Component 
+1. ng generate component <component_name>
+    ng g c <component_name>
+
+ng g c <component_name> --flat  (using this no new folder is created the files gets added in same folder)
+
+2. ng g c <component_name> --standalone false
+for this you will need to have a module mandatory 
+
+ng g c <component_name> --standalone false --module=<module_name>
+
+
+
+
+
+
+@Input @Output  in component 
+@Input -> Receiving data from component 
+@Output -> Sending data from component to parent 
+
+
+
+
+
+#Generate Modules
+
+1. ng g module <module_name>
+2. ng g c <component_name> -m users
+3. ng g c <component_name> -m users --standalone=false
+
+Types of module 
+1 . Feature Module 
+2 . Shared Module
+3 . Lazy Module
+
+
+
+Lazy loading module ->
+1. Lazy loading module will be loaded only when user goes to that routes
+2. Generate a lazy loading module 
+ng g module <module> --routing
+3. Inside lazy loading module we can have 
+- standalone components
+- regular component --standalone false
+
+
+
+
+
+
+
+Interpolation 
+1. Interpolation is a technique written in between double curly braces 
+{{ }}  ->Inside the template
+
+2. Data flow from component(class) to template
+
+3. Security checks for injections cleaning data by escaping HTML entites as u can not inject html properties , bcz it is rendered as a string
+
+
+
+
+Two Way data binding
+1.Two way data flows from component to template and back from template to component
+
+2. Syntax [(ngmodel)]
+
+3. Import "FormsModule" ->Mandatory 
+4.We will bind ngModel to all the form fields
+
+
+
+
+Signals
+
+A signal is a reactive primitive that represent  a value and that allow us to change that same value in controlled way and tracks its changes over time .
+1. Signal is primitive to store values
+2. We can change values in more controlled way
+3. Track changes in the signal 
+4. ng g c signal
+
+5. to define a variable as signal -> signal
+6. Assign initial value 
+7.variableName=signal(<initialValue);
+
+8. How to print/use the value of signal
+9. How to update a value of signal
