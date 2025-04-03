@@ -1,0 +1,11 @@
+Rest api json
+
+get /user HTML doc render
+get /api/user json file render for android 
+get /api/user/1   user with id 1
+ 
+post /api/user create new user
+
+patch /api/user/1 edit user with id 1
+
+

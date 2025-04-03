@@ -1,0 +1,207 @@
+//Start command ---> sam init
+
+
+
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke
+No current session found, using default AWS::AccountId
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Local image was not found.
+Removing rapid images for repo public.ecr.aws/sam/emulation-nodejs20.x
+Building image............................................................................................................................................................................................................................
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+
+Mounting C:\Users\centralogic\Desktop\lambda\helloWorldLambda\hello-world as /var/task:ro,delegated, inside runtime container
+START RequestId: 77352428-adb0-482f-bbe4-c2c607cd29da Version: $LATEST
+END RequestId: 030be86f-55b4-45a6-a696-9e6575d37134
+REPORT RequestId: 030be86f-55b4-45a6-a696-9e6575d37134  Init Duration: 0.04 ms  Duration: 98.45 ms      Billed Duration: 99 ms  Memory Size: 128 MB     Max Memory Used: 128 MB
+{"statusCode": 200, "body": "{\"message\":\"hello world\"}"}
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam build
+Starting Build use cache
+Manifest file is changed (new hash: fdae85c9bf33cba07990272ec404b9c3) or dependency folder (.aws-sam\deps\e3c3cd16-a1a2-4cfa-97c9-9c7b28d93383) is missing for        
+Building codeuri: C:\Users\centralogic\Desktop\lambda\helloWorldLambda\hello-world runtime: nodejs20.x architecture: x86_64 functions: HelloWorldFunction
+ Running NodejsNpmBuilder:NpmPack
+ Running NodejsNpmBuilder:CopyNpmrcAndLockfile
+ Running NodejsNpmBuilder:CopySource
+ Running NodejsNpmBuilder:NpmInstall
+ Running NodejsNpmBuilder:CleanUp
+ Running NodejsNpmBuilder:CopyDependencies
+ Running NodejsNpmBuilder:CleanUpNpmrc
+ Running NodejsNpmBuilder:LockfileCleanUp
+ Running NodejsNpmBuilder:LockfileCleanUp
+
+Build Succeeded
+
+Built Artifacts  : .aws-sam\build
+Built Template   : .aws-sam\build\template.yaml
+
+Commands you can use next
+=========================
+[*] Validate SAM template: sam validate
+[*] Invoke Function: sam local invoke
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+[*] Deploy: sam deploy --guided
+
+Built Artifacts  : .aws-sam\build
+Built Template   : .aws-sam\build\template.yaml
+
+Commands you can use next
+=========================
+[*] Validate SAM template: sam validate
+[*] Invoke Function: sam local invoke
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+[*] Deploy: sam deploy --guided
+Built Artifacts  : .aws-sam\build
+Built Template   : .aws-sam\build\template.yaml
+
+Commands you can use next
+=========================
+[*] Validate SAM template: sam validate
+[*] Invoke Function: sam local invoke
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+[*] Deploy: sam deploy --guided
+Built Template   : .aws-sam\build\template.yaml
+
+Commands you can use next
+=========================
+[*] Validate SAM template: sam validate
+[*] Invoke Function: sam local invoke
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+[*] Deploy: sam deploy --guided
+Commands you can use next
+=========================
+[*] Validate SAM template: sam validate
+[*] Invoke Function: sam local invoke
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+[*] Deploy: sam deploy --guided
+=========================
+[*] Validate SAM template: sam validate
+[*] Invoke Function: sam local invoke
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+[*] Deploy: sam deploy --guided
+[*] Invoke Function: sam local invoke
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+[*] Deploy: sam deploy --guided
+[*] Test Function in the Cloud: sam sync --stack-name {{stack-name}} --watch
+[*] Deploy: sam deploy --guided
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke
+[*] Deploy: sam deploy --guided
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke
+No current session found, using default AWS::AccountId
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Invoking app.lambdaHandler (nodejs20.x)
+Local image is up-to-date
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+Mounting C:\Users\centralogic\Desktop\lambda\helloWorldLambda\.aws-sam\build\HelloWorldFunction as /var/task:ro,delegated, inside runtime container
+START RequestId: 5b5b4011-0b92-43d1-9d22-8e3b083e7668 Version: $LATEST
+END RequestId: 1e02dca0-06b6-4f57-9f6f-6cdde904f40f
+REPORT RequestId: 1e02dca0-06b6-4f57-9f6f-6cdde904f40f  Init Duration: 0.06 ms  Duration: 108.42 ms     Billed Duration: 109 ms Memory Size: 128 MB     Max Memory Used: 128 MB
+{"statusCode": 200, "body": "{\"message\":\"hello world 12345678\"}"}
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke -events/event.json
+Error: [Errno 2] No such file or directory: 'vents/event'
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke events/event.json
+No current session found, using default AWS::AccountId
+events/event.json not found. Possible options in your template: ['HelloWorldFunction']
+
+Aborted!
+Exception ignored in: <module 'threading' from 'C:\\Program Files\\Amazon\\AWSSAMCLI\\runtime\\stdlib\\threading.pyc'>
+Traceback (most recent call last):
+  File "threading.py", line 1624, in _shutdown
+KeyboardInterrupt: 
+Terminate batch job (Y/N)? Y
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+Aborted!
+Exception ignored in: <module 'threading' from 'C:\\Program Files\\Amazon\\AWSSAMCLI\\runtime\\stdlib\\threading.pyc'>
+Traceback (most recent call last):
+  File "threading.py", line 1624, in _shutdown
+KeyboardInterrupt:
+Terminate batch job (Y/N)? Y
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+Exception ignored in: <module 'threading' from 'C:\\Program Files\\Amazon\\AWSSAMCLI\\runtime\\stdlib\\threading.pyc'>
+Traceback (most recent call last):
+  File "threading.py", line 1624, in _shutdown
+KeyboardInterrupt:
+Terminate batch job (Y/N)? Y
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+  File "threading.py", line 1624, in _shutdown
+KeyboardInterrupt:
+Terminate batch job (Y/N)? Y
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+KeyboardInterrupt:
+Terminate batch job (Y/N)? Y
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+
+Mounting C:\Users\centralogic\Desktop\lambda\helloWorldLambda\.aws-sam\build\HelloWorldFunction as /var/task:ro,delegated, inside runtime container
+START RequestId: 7cfaa378-9837-401d-9643-4444ae73f2f2 Version: $LATEST
+END RequestId: f47aa80c-c887-4630-8414-5551d14900ed
+REPORT RequestId: f47aa80c-c887-4630-8414-5551d14900ed  Init Duration: 0.06 ms  Duration: 98.18 ms      Billed Duration: 99 ms  Memory Size: 128 MB     Max Memory Used: 128 MB
+{"statusCode": 200, "body": "{\"message\":\"hello world 12345678\"}"}
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+
+Mounting C:\Users\centralogic\Desktop\lambda\helloWorldLambda\.aws-sam\build\HelloWorldFunction as /var/task:ro,delegated, inside runtime container
+START RequestId: 7cfaa378-9837-401d-9643-4444ae73f2f2 Version: $LATEST
+END RequestId: f47aa80c-c887-4630-8414-5551d14900ed
+REPORT RequestId: f47aa80c-c887-4630-8414-5551d14900ed  Init Duration: 0.06 ms  Duration: 98.18 ms      Billed Duration: 99 ms  Memory Size: 128 MB     Max Memory Used: 128 MB
+{"statusCode": 200, "body": "{\"message\":\"hello world 12345678\"}"}
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+No current session found, using default AWS::AccountId
+START RequestId: 7cfaa378-9837-401d-9643-4444ae73f2f2 Version: $LATEST
+END RequestId: f47aa80c-c887-4630-8414-5551d14900ed
+REPORT RequestId: f47aa80c-c887-4630-8414-5551d14900ed  Init Duration: 0.06 ms  Duration: 98.18 ms      Billed Duration: 99 ms  Memory Size: 128 MB     Max Memory Used: 128 MB
+{"statusCode": 200, "body": "{\"message\":\"hello world 12345678\"}"}
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+END RequestId: f47aa80c-c887-4630-8414-5551d14900ed
+REPORT RequestId: f47aa80c-c887-4630-8414-5551d14900ed  Init Duration: 0.06 ms  Duration: 98.18 ms      Billed Duration: 99 ms  Memory Size: 128 MB     Max Memory Used: 128 MB
+{"statusCode": 200, "body": "{\"message\":\"hello world 12345678\"}"}
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+{"statusCode": 200, "body": "{\"message\":\"hello world 12345678\"}"}
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda> sam local invoke HelloWorldFunction -e events/event.json
+No current session found, using default AWS::AccountId
+Invoking app.lambdaHandler (nodejs20.x)
+Local image is up-to-date
+Using local image: public.ecr.aws/lambda/nodejs:20-rapid-x86_64.
+
+Mounting C:\Users\centralogic\Desktop\lambda\helloWorldLambda\.aws-sam\build\HelloWorldFunction as /var/task:ro,delegated, inside runtime container
+START RequestId: 1f76e735-2461-4a96-82b6-de69b0598cb3 Version: $LATEST
+END RequestId: 88d9238d-6c3e-4660-8e24-acda97d7a719
+REPORT RequestId: 88d9238d-6c3e-4660-8e24-acda97d7a719  Init Duration: 0.04 ms  Duration: 96.59 ms      Billed Duration: 97 ms  Memory Size: 128 MB     Max Memory Used: 128 MB
+{"statusCode": 200, "body": "{\"message\":\"hello world 12345678\"}"}
+PS C:\Users\centralogic\Desktop\lambda\helloWorldLambda>

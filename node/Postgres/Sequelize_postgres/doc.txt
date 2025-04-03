@@ -1,0 +1,290 @@
+1. npm init -y
+2. npm install sequelize pg
+3. npm init -y
+Install TypeScript as a development dependency:
+4. npm install --save-dev typescript
+Create a tsConfig.ts —-in your directory using command
+5. npx tsc --init
+Configure tsconfig.json
+6. {  "compilerOptions": {    "target": "es6",    "module": "commonjs",    "outDir": "./dist",    "rootDir": "./src",    "strict": true,    "sourceMap": true,  },  "include": [    "src/**/*.ts"  ],  "exclude": [    "node_modules"  ]}
+Create a src directory in your project and add your TypeScript files there.
+Install the Node.js type declarations:
+7. npm install --save-dev @types/node
+8. npm install ts-node --save-dev
+Open your package.json file and add the following scripts:
+9. "scripts": {"start": "node dist/app.js","build": "tsc"},
+10. npm run build
+11. npm start
+
+
+
+In sequelize we define the models to represent database tables .Model is table and its fields are columns in tables 
+
+
+
+Multiple model | node with sequelize
+
+
+
+npm install sequelize sequelize-typescript reflect-metadata for import sequelize-typescript
+
+
+>npm install --save-dev typescript ts-node @types/express @types/node  to install express
+
+
+
+
+
+
+Axios is simple promise based http client for browser and node js.Axios provides simple to use library in small package with very extinsible interface
+
+
+Easy to Use: Axios makes it simple to send HTTP requests like GET, POST, PUT, and DELETE.
+Promise-Based: It uses promises, which makes handling asynchronous operations straightforward.
+Automatic JSON Handling: It automatically converts JSON data for you.
+Interceptors: You can intercept requests and responses to add custom logic, like handling errors or adding authentication tokens.
+Global Settings: You can set default settings for all your requests, like base URLs and headers.
+Cancel Requests: You can cancel requests if needed.
+Timeouts: You can set time limits for requests to avoid waiting too long.
+Multiple Requests: It can handle multiple requests at the same time.
+Progress Tracking: You can track the progress of your requests, useful for file uploads and downloads.
+Works Everywhere: Axios works in both the browser and Node.js.
+
+
+
+Axios use in nodejs
+
+1.  npm install Axios
+2. const axios=require("axios).default
+3. axios.<method Name>  
+
+
+
+HTTP METHODS
+axios.get(url,{})
+axios.post(url,data,{})
+axios.put(url,data,{})
+axios.patch(url,data,{})
+axios.delete(url,{})
+
+
+
+
+for axios in nodejs
+const axios=require('axios')
+router.get("/",async(req,res)=>{
+    axios.get(" url").then(function(response){
+        res.render('index":{response.data.title})
+    }
+    ).catch(function(error)){
+        console.log(error)
+    }
+})
+
+
+
+//for get
+axios.get(" url" ,{
+    params:{id:5}
+}).then(function(response){
+    res.send(response.data)
+}).catch(function(error){
+    console.log(error)
+})
+
+
+
+//if we want to pass id using query param then (http://localhost:3000?id=10)
+idval=req.query.id
+axios.get(" url" ,{
+    params:{id:idval}
+}).then(function(response){
+    res.send(response.data)
+}).catch(function(error){
+    console.log(error)
+})
+
+axios.post(" ",{
+    title:'Our title',
+    body:"This is test body"
+}).then(function(response){
+    res.send(response.data)
+}).catc(function(error){
+    console.log(error)
+})
+
+axios.put(" /id",{
+    
+    title:'Our title',
+    body:"This is test body"
+}).then(function(response){
+    res.send(response.data)
+}).catc(function(error){
+    console.log(error)
+})
+
+axios.delete("").then(function(response){
+    res.send("Data deleted successfully")
+}).catch(function(error){
+    console.log(error)
+})
+
+this in router folder index.js
+
+
+
+
+
+//part 3 
+headers with axios
+const axios=require('axios')
+const e= require('express')
+
+var express=require('express')
+var router=express.Router()
+
+
+router.get("/",function(req,res,next){
+    //headers with axios
+    axios.get(" url",{
+        headers:{'Content-type':'application-json'}
+    } )
+})
+
+
+
+
+router.get("/",function(req,res,next){
+
+    //headers with axios
+    axios.get(" url",{
+        headers:{'Content-type':'application-json'}
+    } )
+
+
+    post with headers
+
+    axios.post(" url",{
+        title:" ",
+        body: " ",
+        withCredentials:false
+        auth:{
+            username:"",
+            passwords:""
+        }},{
+            headers:{'Content-type':'application-json'}
+    }).then(function(response){
+        console.log(response)
+        res.send("Posted data with header")
+    }).catch(error){
+        console.log(error)
+    }
+
+})
+
+
+
+
+
+
+//Concurrent requests from axios where they want to get all promises adn request at one time 
+
+
+const promise1=axios.get(" /users/1",{headers:{'Accept-Encoding':'gzip,compress,deflate'}})
+const promise2=axios.get("/todos/1",{headers:{'Accept-Encoding':'gzip,compress,deflate'}})
+const promise3=axios.get("posts/1",{headers:{'Accept-Encoding':'gzip,compress,deflate'}})
+
+Promise.all([promise1,promise2,promise3]).then(function(response){
+    const combinedata={
+        postsData:results[0],
+        usersData:results[1],
+        todosData:results[2]
+    }
+    console.log(combinedata)
+}).catch(function(error){
+    console.log(err)
+})
+.finally(()=>{
+    res.send("concurrent request completed")
+})
+
+
+
+
+
+
+
+//Interceptors request in axios ->to add some header,check details , inject tokens
+//request Interceptors ->If you want to modify/update your request before API called
+
+
+
+
+
+
+
+//response Interceptors->when you receive the resonse you can due modification,uodate,processing ,transform
+
+
+
+//write this code at top below router.get
+
+axios.interceptor.request.use(request=>{
+    request.headers["startTime"]=new Date();
+    request.headers["secretKey"]='ddsfdfdf';
+    return requests;
+
+},error=>{
+    return Promise.reject("unable to make requets")
+})
+
+
+
+axios.interceptors.response.use(response=>{
+response.headers["organizationVerify"]=true;
+return response
+},error=>{
+    return Promise.reject("unable to process request")
+})
+
+
+
+
+
+//Error Handling using axios
+
+
+
+
+
+axios.post(" url",{
+        title:" ",
+        body: " ",
+        withCredentials:false
+        auth:{
+            username:"",
+            passwords:""
+        }},{
+            headers:{'Content-type':'application-json'}
+    }).then(function(response){
+        console.log(response)
+        res.send("Posted data with header")
+    }).catch(error){
+        if(error.response){
+            //we made a API call -> we got a response from server 
+            //from server we get error then we get in 5xx
+            coneole.log(error.status,error.data,error.headers)
+        }
+        else if(error.request){
+            console.log(error.request);
+
+        }else{
+            console.log("Some thing bad happende)
+        }
+
+    }
+
+
+
+
+

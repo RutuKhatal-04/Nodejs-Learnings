@@ -1,0 +1,417 @@
+
+1) Are there any other http methods ? POST, PUT , PATCH, DELETE
+
+Yes, there are other HTTP methods besides POST, PUT, PATCH, and DELETE. Here are a few:
+
+GET: Retrieves data from the server.
+HEAD: Similar to GET but only retrieves the headers.
+OPTIONS: Describes the communication options for the target resource.
+CONNECT: Establishes a tunnel to the server.
+
+
+2)Why TypeScript is preferred in Bank Industry over Traditional Javascript
+
+
+TypeScript is often preferred in the banking industry over traditional JavaScript for several reasons:
+
+Static Typing: TypeScript's static typing helps catch errors at compile time, reducing runtime errors and increasing code reliability, which is crucial in the banking sector.
+
+Enhanced IDE Support: TypeScript offers better support in Integrated Development Environments (IDEs), providing features like autocompletion, refactoring, and navigation, which improve developer productivity and code quality.
+
+Scalability: TypeScript's features, such as interfaces and type annotations, make it easier to manage and scale large codebases, which is common in banking applications.
+
+Maintainability: The strong typing system and clear structure of TypeScript code make it easier to maintain and understand, which is important for long-term projects in the banking industry.
+
+Interoperability: TypeScript is a superset of JavaScript, meaning it can seamlessly integrate with existing JavaScript codebases, allowing for gradual adoption without a complete rewrite.
+
+
+
+
+3)If there's already npm init , then why tsc - - init ?
+npm init: Sets up a Node.js project, allowing you to manage dependencies, scripts, and project metadata through the package.json file.
+
+tsc --init: Initializes a TypeScript project by creating a tsconfig.json file, which configures the TypeScript compiler options, such as target version, module system, and other settings specific to TypeScript.
+
+
+4) How to check UI is calling which API on deployed screen?
+To check which API a UI is calling on a deployed screen, you can use the following methods:
+
+Browser Developer Tools: Most modern browsers have built-in developer tools. You can open these tools (usually by pressing F12 or Ctrl+Shift+I) and navigate to the "Network" tab. Here, you can see all the network requests made by the UI, including API calls.
+
+Postman Proxy: Postman offers a proxy feature that can capture HTTP requests and responses from a website. You can configure the proxy settings in Postman to monitor the API calls made by your UI1.
+
+Logging: Implement logging in your application to log API calls. This can be done on the client-side (in the UI code) or server-side (in the API code).
+
+API Monitoring Tools: Use tools like Swagger UI or API Gateway dashboards to monitor and inspect API calls. These tools provide detailed insights into the API requests and responses.
+
+
+5)Why tsconfig was edited in first session, Isn't it possible to run your code without changing tsconfig(Check
+diffferences between auto generated older tsconfig and newer tsconfig
+
+
+The tsconfig.json file is often edited to customize the TypeScript compiler settings to better suit the project's needs. While it's possible to run TypeScript code with the default tsconfig.json, customizing it can provide several benefits, such as improved performance, stricter type checking, and better compatibility with specific project requirements.
+
+
+6)After npm run build, a dist folder is generated, What difference it make : What is contained in the dist folder
+
+
+The dist (short for "distribution") folder is generated after running npm run build and contains the production-ready version of your application. Here's what it typically includes:
+
+Compiled JavaScript Files: Your TypeScript or modern JavaScript code is transpiled into plain JavaScript that browsers can understand.
+
+Minified Files: The JavaScript and CSS files are minified to reduce file size, improving load times.
+
+Bundled Files: All your modules and dependencies are bundled into a few files, often with unique hashes in their filenames for cache busting.
+
+Static Assets: Any static assets like images, fonts, and other resources are copied over.
+
+HTML Files: The main HTML file(s) that reference the bundled JavaScript and CSS files.
+
+
+
+7)In notes section , you saw someting like /:datatype, What it is ? Significance of routes . How can you check
+from in screens on deployed portals? 
+
+The /:datatype notation you saw in the notes section is an example of a dynamic route parameter. In web development, routes define the paths that map URLs to specific handlers or controllers in your application. Here's a breakdown:
+
+Significance of Routes
+Path Definition: Routes define specific paths within the application, correlating with URL patterns.
+Action Association: Each route is linked to an action or set of actions that the application should perform when the route is accessed.
+Dynamic Routing: Routes can include dynamic parameters (e.g., /:datatype), allowing the application to handle different data types or IDs dynamically.
+Organization: Routes help organize the application, making it easier to manage and navigate.
+Checking Routes on Deployed Portals
+To check which routes are being called on a deployed portal, you can use:
+
+Browser Developer Tools: Open the developer tools (usually with F12 or Ctrl+Shift+I), go to the "Network" tab, and observe the URLs being requested.
+Logging: Implement logging in your application to log route accesses.
+API Monitoring Tools: Use tools like Swagger UI or API Gateway dashboards to monitor and inspect route calls.
+
+
+
+8)Do you need to everytime build the project before running, Any other alternative?
+
+You don't always need to build the project before running it. Here are some alternatives:
+
+Hot Reloading: Many modern frameworks (like React, Angular, and Vue) support hot reloading, which automatically updates the application in the browser as you make changes, without needing a full rebuild.
+
+Watch Mode: Tools like tsc (TypeScript compiler) and webpack offer watch modes (tsc --watch or webpack --watch) that automatically recompile only the changed files, speeding up the development process.
+
+Development Servers: Using development servers (like webpack-dev-server or vite) can serve your application with live reloading, reducing the need for manual builds.
+
+
+
+9)Why added scripts in package.json, Can it not work if we dont add scripts (Check notes section)
+
+Adding scripts to the package.json file is a way to automate and simplify common tasks in your project. While it's possible to run commands without adding scripts, using the scripts section offers several benefits:
+
+Convenience: Scripts allow you to run complex commands with a simple npm run <script-name>. This saves time and reduces the chance of errors.
+
+Consistency: By defining scripts, you ensure that all team members use the same commands and configurations, leading to a more consistent development process.
+
+Documentation: Scripts serve as documentation for common tasks, making it easier for new developers to understand and contribute to the project.
+
+Automation: You can automate repetitive tasks like building, testing, and deploying your application, improving efficiency and productivity12.
+
+
+10)My Postgres is running on local port 8000, will the (notes section) api run?
+If your PostgreSQL is running on local port 8000, it might conflict with other services or APIs that also use port 8000. Typically, PostgreSQL runs on port 5432 by default. Here are a few things to consider:
+
+Port Conflict: Ensure no other service (like your API) is trying to use port 8000. If there is a conflict, you might need to change the port for either PostgreSQL or the other service.
+
+Configuration: Check the configuration files for both PostgreSQL and your API to ensure they are set to use different ports. For PostgreSQL, this is usually in the postgresql.conf file.
+
+Environment Variables: If your API uses environment variables to set the port, make sure it is not set to 8000.
+
+11)Is Express only framework for creating server, Was NodeJS alone not sufficient
+
+
+Express is not the only framework for creating servers with Node.js, but it is one of the most popular due to its simplicity and flexibility. Here are a few reasons why developers often choose Express over using Node.js alone:
+
+Ease of Use: Express simplifies many tasks that would be more complex with plain Node.js, such as routing, middleware management, and handling HTTP requests and responses.
+
+Middleware: Express has a robust middleware system that allows you to add functionality to your server easily, such as logging, authentication, and error handling.
+
+Community and Ecosystem: Express has a large community and a rich ecosystem of plugins and extensions, making it easier to find solutions and support.
+
+Flexibility: While Express provides a lot of functionality out of the box, it is unopinionated, meaning you can structure your application as you see fit.
+
+
+12) Npm module used for postgresDb is pg , Can same module be utitlized for other structured databases
+
+The pg module is specifically designed for PostgreSQL and leverages PostgreSQL-specific features and syntax. It cannot be directly used for other structured databases like MySQL, SQLite, or SQL Server. Each of these databases has its own npm modules tailored to their specific requirements:
+
+MySQL: Use the mysql or mysql2 module.
+SQLite: Use the sqlite3 module.
+SQL Server: Use the mssql module.
+
+
+13). Do inbuilt functions (array/ strings) consume same time complexity as that of traditional iterations and conditionals? What would be compelxities
+for above questions
+
+ 
+
+
+14) Why port no. 5432 is defined everywhere , Can you change it ? How same url is configured for Deployed postgres servers?
+15)What is migration in structured databases
+Database migration, also known as schema migration, involves making controlled changes to the structure of a relational database. This process is essential for evolving the database schema to meet new requirements without losing data. Here are the key aspects:
+
+Schema Changes: Modifying tables, columns, indexes, constraints, and relationships within the database.
+Data Transformation: Ensuring data fits the new schema structure and maintains integrity.
+Version Control: Using migration tools to track and manage changes, making them repeatable and shareable.
+Automation: Automating the migration process to minimize errors and downtim
+
+
+16)What are ORMs in database manipulation in NodeJS? In what sense , they help your Node Application? Do they come with any cons
+
+
+ORM stands for Object-Relational Mapping. It's a technique that allows you to interact with your database using object-oriented programming languages. In Node.js, ORMs map database tables to JavaScript objects, making it easier to perform CRUD (Create, Read, Update, Delete) operations without writing raw SQL queries.
+
+How ORMs Help Your Node Application
+Abstraction: ORMs abstract the database interactions, allowing you to work with JavaScript objects instead of SQL queries.
+Productivity: They reduce boilerplate code, making development faster and more efficient.
+Portability: ORMs can work with different databases, making it easier to switch databases without changing your application code.
+Security: They help prevent SQL injection attacks by using parameterized queries.
+Maintainability: ORMs provide a clear structure for database interactions, making the codebase easier to maintain and understand.
+Common ORMs in Node.js
+Sequelize: A promise-based ORM for Node.js and io.js.
+TypeORM: Supports both Active Record and Data Mapper patterns.
+Prisma: A modern ORM that focuses on type safety and developer experience.
+Cons of Using ORMs
+Performance Overhead: ORMs can introduce performance overhead compared to raw SQL queries, especially for complex queries.
+Learning Curve: There is a learning curve associated with understanding and effectively using an ORM.
+Limited Flexibility: ORMs might not support all database-specific features, limiting flexibility.
+Abstraction Leaks: Sometimes, the abstraction provided by ORMs can leak, requiring you to write raw SQL for complex operations
+
+
+17)Why are CRUD operations are implemented in first place
+CRUD operations-Create, Read, Update, and Delete-are fundamental to any application that requires data management. Here's why they are implemented:
+
+Data Persistence: CRUD operations allow applications to store data permanently in a database, ensuring that data is not lost when the application is closed or restarted.
+
+Data Retrieval: They enable the retrieval of data from the database, allowing users to view and interact with stored information.
+
+Data Modification: CRUD operations allow for updating existing data, ensuring that information remains current and accurate.
+
+Data Deletion: They provide a way to remove data that is no longer needed, helping to maintain the database's integrity and performance.
+
+Standardization: CRUD operations provide a standardized way to interact with databases, making it easier for developers to understand and work with different systems
+
+
+18) Its easier if entity fields are less (id , username, email). How can you make it feasible with increase in field
+
+As the number of fields in an entity increases, managing and working with the data can become more complex. Here are some strategies to make it feasible:
+
+Normalization: Break down large entities into smaller, related tables to reduce redundancy and improve data integrity. Use foreign keys to maintain relationships between tables.
+
+Modular Design: Group related fields into modules or sections. For example, separate user profile information from account settings.
+
+Use of Views: Create database views to simplify complex queries and present a simplified version of the data.
+
+ORMs: Utilize Object-Relational Mapping (ORM) tools like Sequelize or TypeORM to manage complex entities more efficiently. ORMs can help automate and simplify CRUD operations.
+
+Documentation: Maintain clear documentation of the database schema, including field descriptions and relationships, to help developers understand and work with the data.
+
+Indexing: Implement indexing on frequently queried fields to improve query performance.
+
+
+19)What are primary keys and foriegn keys ?
+2.NodeJS Assignment + Notes - Array & String functions + Postgres Initial setup 2
+9. Is serially increasing id (1, 2, 3, 4) the industry standard approach for setting a primary key. What are UIds , Module named UUId4
+
+
+Primary Keys:
+
+A primary key is a column or a set of columns that uniquely identifies each row in a table.
+It must contain unique values and cannot contain NULL values.
+Example: In a Users table, the user_id column could be the primary key1.
+Foreign Keys:
+
+A foreign key is a column or a set of columns in one table that refers to the primary key in another table.
+It creates a link between the two tables, ensuring referential integrity.
+Example: In an Orders table, the user_id column could be a foreign key that references the user_id in the Users table2.
+Serially Increasing IDs vs. UUIDs
+Serially Increasing IDs:
+
+Commonly used as primary keys (e.g., 1, 2, 3, 4).
+Pros: Simple, easy to read, and efficient in terms of storage.
+Cons: Not suitable for distributed systems as they can lead to conflicts and are predictable3.
+UUIDs (Universally Unique Identifiers):
+
+UUIDs are 128-bit values used to uniquely identify information.
+Pros: Globally unique, suitable for distributed systems, and harder to guess.
+Cons: Larger in size (16 bytes), less readable, and can impact performance due to their randomnes
+
+
+
+21). What is async and await ? What is ACID rule in Dbms. Do awaitable functions facilitate Acid rule to some extent ?
+
+
+
+
+
+Async and Await are keywords in JavaScript (and other languages) that simplify working with asynchronous code:
+
+Async: Declares an asynchronous function, which returns a Promise. It allows you to write asynchronous code that looks synchronous.
+
+async function fetchData() {
+  return "Data fetched";
+}
+Await: Pauses the execution of an async function until the Promise is resolved. It can only be used inside an async function.
+
+async function fetchData() {
+  let data = await fetch('https://api.example.com/data');
+  console.log(data);
+}
+fetchData();
+ACID Rule in DBMS
+ACID stands for Atomicity, Consistency, Isolation, and Durability. These are key properties that ensure reliable processing of database transactions:
+
+Atomicity: Ensures that all operations within a transaction are completed; if any part fails, the entire transaction fails and the database state is unchanged.
+Consistency: Ensures that a transaction brings the database from one valid state to another, maintaining database rules.
+Isolation: Ensures that transactions are executed in isolation from one another, preventing concurrent transactions from interfering with each other.
+Durability: Ensures that once a transaction is committed, it remains so, even in the event of a system failure12.
+Do Awaitable Functions Facilitate ACID Rule?
+Awaitable functions (using async and await) can help facilitate the ACID properties to some extent, particularly Atomicity and Isolation:
+
+Atomicity: By using async and await, you can ensure that all parts of an asynchronous operation are completed before proceeding, mimicking the "all or nothing" principle.
+Isolation: Awaitable functions can help manage concurrent operations, ensuring that one operation completes before another begins, thus maintaining isolation.
+
+
+25)Why headers are required for any api? Are there any API that can excecute without headers ? What are default headers
+Why Headers are Required for APIs
+Headers in APIs are essential because they provide metadata about the request and response, guiding how the data should be processed. Here are some key reasons why headers are important:
+
+Authentication: Headers often contain authentication credentials (e.g., API keys, tokens) to verify the identity of the requester.
+Content-Type: Specifies the media type of the resource (e.g., application/json), ensuring the server and client understand the data format.
+Accept: Indicates the media types the client is willing to receive, helping the server respond with the appropriate format.
+Caching: Headers like Cache-Control manage how responses are cached, improving performance.
+User-Agent: Identifies the client software making the request, which can be useful for analytics and debugging12.
+APIs Without Headers
+While most APIs use headers for the reasons mentioned above, some APIs can execute without requiring specific headers. These are usually public APIs that do not need authentication or special handling. Examples include APIs for fetching random images or public data sets34.
+
+Default Headers
+Some common default headers include:
+
+Content-Type: Indicates the media type of the resource.
+Authorization: Contains credentials for authenticating the request.
+Accept: Specifies the media types that the client is willing to receive.
+User-Agent: Identifies the client software making the request
+
+
+26) Are there any industry standard alternative to nodemailer? Have you heard use of SMTP?
+
+Yes, there are several industry-standard alternatives to Nodemailer for sending emails in Node.js applications. Some popular ones include:
+
+SendGrid: A cloud-based email service that provides reliable delivery, scalability, and real-time analytics1.
+Mailgun: Offers powerful APIs for sending, receiving, and tracking emails1.
+Amazon SES (Simple Email Service): A cost-effective email service that integrates well with other AWS services1.
+EmailJS: Allows sending emails directly from JavaScript without backend development1.
+Mailchimp: Known for its email marketing capabilities, it also offers transactional email services1.
+Use of SMTP
+SMTP (Simple Mail Transfer Protocol) is a standard protocol for sending emails across the Internet. It is widely used by mail servers and email clients to transmit messages. SMTP defines the rules for communication between email servers and clients, ensuring that emails are sent and received correctly234.
+
+SMTP is often used in conjunction with other protocols like IMAP or POP3 for retrieving emails. Many email services, including those mentioned above, use SMTP under the hood to handle email transmission.
+
+
+26) Alternatives to axios ?
+Yes, there are several alternatives to Axios for making HTTP requests in Node.js and JavaScript applications. Here are some popular ones:
+
+Fetch API: A built-in browser API that provides a simple and modern way to make HTTP requests. It is widely used in web applications.
+Node-fetch: A lightweight module that brings the Fetch API to Node.js environments1.
+SuperAgent: A robust HTTP client for Node.js and browsers, known for its flexibility and ease of use1.
+Got: A powerful and feature-rich HTTP request library for Node.js, supporting retries and HTTP/21.
+Request: Although deprecated, it was a popular choice for making HTTP requests in Node.js1.
+Axios: Still a strong contender, but it's good to know there are alternatives if you need specific features
+
+
+27)What are DTOs ? What is its purpose
+What are DTOs?
+DTOs (Data Transfer Objects) are simple objects used to transfer data between different parts of a system, especially between processes or over a network. They are designed to carry data without containing any business logic12.
+
+Purpose of DTOs
+Reduce Method Calls: DTOs help reduce the number of method calls by bundling multiple parameters into a single object. This is particularly useful in remote interfaces where each call can be expensive1.
+
+Encapsulation: They encapsulate the data and provide a single point of change for serialization logic, making it easier to manage how data is transferred and stored1.
+
+Decoupling: DTOs decouple the domain model from the presentation layer, allowing both to evolve independently. This separation helps maintain a clean architecture1.
+
+Flexibility: They allow for different views of the same data, optimizing the data structure to meet the needs of various clients without affecting the domain model1.
+
+Example
+Consider a simple application with a User entity. Instead of passing individual fields like id, name, and email separately, you can use a DTO to bundle them together:
+
+class UserDTO {
+  constructor(id, name, email) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+  }
+}
+This way, you can pass a single UserDTO object between different parts of your application, reducing the complexity and number of method calls.
+
+
+
+28)Why sequelize is perferred over other ORMs
+Sequelize is often preferred over other ORMs in Node.js for several reasons:
+
+Mature and Stable: Sequelize has been around for a long time and has a proven track record of stability and reliability1.
+
+Versatile Database Support: It supports a wide range of relational databases, including PostgreSQL, MySQL, SQLite, and SQL Server, providing flexibility in database choice1.
+
+Comprehensive Features: Sequelize offers a rich set of features, such as migrations, associations, and query builders, which streamline the development workflow1.
+
+Active Community: It has a large and active community, providing extensive documentation, tutorials, and support resources1.
+
+TypeScript Support: Sequelize offers full type support through its official TypeScript definitions, enhancing code maintainability and catching errors early on1.
+
+Cons of Sequelize
+While Sequelize has many advantages, it also has some potential drawbacks:
+
+Steeper Learning Curve: Compared to some other ORMs, Sequelize's API can be more complex for beginners1.
+Potential for Boilerplate Code: The flexibility of Sequelize can sometimes lead to writing more code compared to more declarative ORMs like Prisma1.
+
+
+29)What problems can arise due to use of raw SQL queries in application?
+Using raw SQL queries in an application can lead to several potential problems:
+
+Security Risks: Raw SQL queries can be vulnerable to SQL injection attacks if not properly sanitized. This can lead to unauthorized access and manipulation of the database1.
+
+Maintenance Challenges: Raw SQL can be harder to maintain, especially in large codebases. Changes to the database schema might require modifications across multiple queries, increasing the risk of errors1.
+
+Portability Issues: SQL dialects vary across different database systems. Raw SQL queries written for one database might not work on another, making it harder to switch databases or support multiple database systems1.
+
+Readability and Complexity: Raw SQL queries can become complex and difficult to read, especially for developers who are not familiar with SQL. This can make the codebase harder to understand and maintain1.
+
+Lack of Abstraction: Unlike ORMs, raw SQL does not provide an abstraction layer, which means developers need to handle low-level database interactions manually. This can lead to more boilerplate code and increased chances of bugs1.
+
+While raw SQL can offer more control and potentially better performance for specific queries, these drawbacks often make ORMs or query builders a more practical choice for many applications.
+
+
+30) All the functions are imported and exported seperately, Can there be use of Class to wrap these all funcitions and only classes can be exported and
+imported then?
+
+Yes, you can definitely use a class to wrap all the functions and then export and import the class. This approach can help organize your code better, especially if the functions are related and share some common state or behavior
+Benefits of Using a Class
+Encapsulation: Group related functions together, making the code more modular and easier to manage.
+State Management: If the functions need to share some state, a class can hold that state.
+Reusability: Classes can be extended and reused, promoting code reuse and reducing duplication.
+
+Using a Class
+// utils.js
+class MathUtils {
+  add(a, b) {
+    return a + b;
+  }
+
+  subtract(a, b) {
+    return a - b;
+  }
+}
+
+export default MathUtils;
+
+// main.js
+import MathUtils from './utils';
+const mathUtils = new MathUtils();
+console.log(mathUtils.add(2, 3)); // 5
+console.log(mathUtils.subtract(5, 2)); // 3

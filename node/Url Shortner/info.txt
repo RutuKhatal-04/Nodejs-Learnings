@@ -1,0 +1,8 @@
+URL SHORTNER
+Converts long url to short 
+Also keeps tracks of total visits clicks on url
+
+*Routes
+POST/URL/ - generate the new short url and return the shorten url
+GET/:id - redirect url to original url
+GET/URL/analytics/:id - Return click for the provided url'

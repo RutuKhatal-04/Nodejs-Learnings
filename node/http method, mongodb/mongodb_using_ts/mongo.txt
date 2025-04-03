@@ -1,0 +1,231 @@
+
+copilot link ->https://copilot.cloud.microsoft/?fromcode=bingchat&redirectid=4A482206021C4754BDDF8145756B044F&auth=2
+
+
+Step 1: Install Mongoose
+First, you need to install Mongoose:
+
+npm install mongoose
+Step 2: Define Models
+Create models for Author and Book.
+
+Author Model
+import mongoose, { Schema, Document } from 'mongoose';
+
+interface IAuthor extends Document {
+  name: string;
+  bio: string;
+  birthdate: string;
+  isSystemUser: boolean;
+}
+
+const AuthorSchema: Schema = new Schema({
+  name: { type: String, required: true },
+  bio: { type: String, required: true, default: 'Bio for author' },
+  birthdate: { type: String, required: true, default: '1999-10-27' },
+  isSystemUser: { type: Boolean, required: true, default: false }
+}, { timestamps: true });
+
+const Author = mongoose.model<IAuthor>('Author', AuthorSchema);
+export default Author;
+Book Model
+import mongoose, { Schema, Document } from 'mongoose';
+
+interface IBook extends Document {
+  bookCode: string;
+  title: string;
+  authors: string[];
+  description: string;
+  publishedDate: string;
+  price: number;
+}
+
+const BookSchema: Schema = new Schema({
+  bookCode: { type: String, required: true },
+  title: { type: String, required: true },
+  authors: { type: [String], required: true },
+  description: { type: String, required: true, default: 'No description available' },
+  publishedDate: { type: String, required: true, default: 'Unknown year' },
+  price: { type: Number, required: true, default: 600 }
+}, { timestamps: true });
+
+const Book = mongoose.model<IBook>('Book', BookSchema);
+export default Book;
+Step 3: Implement Controllers
+Implement the controllers to handle the CRUD operations.
+
+Book Controller
+import { Request, Response } from 'express';
+import axios from 'axios';
+import Book from '../models/Book';
+import Author from '../models/Author';
+
+// Get book list with pagination
+export const getBooklist = async (req: Request, res: Response) => {
+  const { page = '1', size = '10' } = req.query;
+  const limit = parseInt(size as string);
+  const offset = (parseInt(page as string) - 1) * limit;
+
+  try {
+    const response = await axios.get('https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=YOUR_API_KEY', {
+      params: {
+        startIndex: offset,
+        maxResults: limit,
+      },
+    });
+
+    const data = response.data;
+    const totalItems = data.totalItems;
+    const books = data.items;
+
+    const result = await Promise.all(books.map(async (book: any) => {
+      const bookCode = book.id;
+      const title = book.volumeInfo?.title || 'No title available';
+      const authors = book.volumeInfo?.authors || ['Unknown author'];
+      const description = book.volumeInfo?.description || 'No description available';
+      const publishedDate = book.volumeInfo?.publishedDate || 'Unknown year';
+      const price = 600;
+
+      await Book.create({
+        bookCode,
+        title,
+        authors,
+        description,
+        publishedDate,
+        price,
+      });
+
+      return {
+        bookCode,
+        title,
+        authors,
+        description,
+        publishedDate,
+        price,
+      };
+    }));
+
+    res.json({
+      message: "Data Got Inserted",
+      totalItems,
+      books: result,
+      totalPages: Math.ceil(totalItems / limit),
+      currentPage: parseInt(page as string),
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch books' });
+  }
+};
+
+// Other CRUD operations for Book and Author models can be implemented similarly
+Step 4: Connect to MongoDB
+Create a connection to MongoDB in your main application file.
+
+import mongoose from 'mongoose';
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect('mongodb://localhost:27017/your_database_name', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('MongoDB connected successfully.');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+  }
+};
+
+connectDB();
+
+
+
+
+
+To achieve similar functionality in MongoDB using Mongoose, you don't need to explicitly sync the database schema as you do with Sequelize. Instead, Mongoose handles schema creation and updates automatically. However, you can ensure indexes are created and handle the connection setup.
+
+
+
+Exactly! In Sequelize, you use the .create() method to create a new instance of a model and save it to the database. For example:
+
+await Book.create({
+  bookCode,
+  title,
+  authors,
+  description,
+  publishedDate,
+  price,
+});
+In Mongoose, you create a new instance of a model using the new keyword and then call the .save() method to save it to the database. For example:
+
+const newBook = new Book({
+  bookCode,
+  title,
+  authors,
+  description,
+  publishedDate,
+  price,
+});
+await newBook.save();
+
+
+
+
+
+Copilot
+Sure! Here's how you can implement the deleteBook and updateBook functions using Mongoose for MongoDB:
+
+Delete Book
+import { Request, Response } from 'express';
+import Book from '../models/Book';
+
+export const deleteBook = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const book = await Book.findById(id);
+
+    if (!book) {
+      res.status(404).json({ message: "Book not found" });
+      return;
+    }
+
+    await book.deleteOne();
+    res.json({ message: "Book got deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
+Update Book
+import { Request, Response } from 'express';
+import Book from '../models/Book';
+
+export const updateBook = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const updateData = req.body;
+
+  try {
+    const book = await Book.findById(id);
+
+    if (!book) {
+      res.status(404).json({ message: 'Book not found' });
+      return;
+    }
+
+    // Use Object.assign to update only the fields present in updateData
+    Object.assign(book, updateData);
+
+    await book.save();
+    res.status(200).json(book);
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred', error });
+  }
+};
+Explanation
+Delete Book:
+
+findById(id): Finds the book by its ID.
+deleteOne(): Deletes the found book.
+Update Book:
+
+findById(id): Finds the book by its ID.
+Object.assign(book, updateData): Updates the book with the new data.
+save(): Saves the updated book.
